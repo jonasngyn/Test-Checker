@@ -20,27 +20,33 @@ def cmp_lines(path_1, path_2):
                 return False
     return True
 
+cnt=0.0;
+
 if MODE==0:
     for i in range(FIRST,LAST+1):
-        shutil.copyfile("./test/"+TEST_INPUT_TYPE+str(i).zfill(SUFFIX_SIZE), "input.txt")
+        shutil.copyfile("./test/"+TEST_INPUT_TYPE+str(i).zfill(SUFFIX_SIZE), INPUT_SOURCE)
         os.system("./test.out")
         shutil.copyfile("./test/"+TEST_OUTPUT_TYPE+str(i).zfill(SUFFIX_SIZE), "answer.txt")
         print("Test "+str(i)+": ",end='')
         
-        res=cmp_lines('output.txt', 'answer.txt')
+        res=cmp_lines(OUTPUT_SOURCE, 'answer.txt')
+        if (res==True):
+            cnt=cnt+1.0;
         
         print(str(res))
         print("Done")
         print()
+    print("DONE!!")
+    print("Correct: " + str(round(cnt/(LAST+1.0-FIRST)*100 , 2))+"%" )
         
 else:
     for i in range(FIRST,LAST+1):
-        shutil.copyfile("./test/"+TEST_INPUT_TYPE+str(i).zfill(SUFFIX_SIZE), "input.txt")
+        shutil.copyfile("./test/"+TEST_INPUT_TYPE+str(i).zfill(SUFFIX_SIZE), INPUT_SOURCE)
         os.system("./test.out")
         shutil.copyfile("./test/"+TEST_OUTPUT_TYPE+str(i).zfill(SUFFIX_SIZE), "answer.txt")
         #print("Test "+str(i)+": ",end='')
         
-        res=cmp_lines('output.txt', 'answer.txt')
+        res=cmp_lines(OUTPUT_SOURCE, 'answer.txt')
         
         if(res==False):
             print("Wrong Answer as test: "+str(i))

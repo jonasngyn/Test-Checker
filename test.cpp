@@ -29,7 +29,7 @@ int main()
     
  	cin >> A >> B >>m;
  	FOR(i,1,A) {cin >> a[i]; minA=min(minA,a[i]);}
- 	FOR(i,1,B) {cin >> b[i]; minB=min(minB,b[i]);}
+ 	FOR(i,1,B) {cin >> b[i]; minA=min(minB,b[i]);}
  	FOR(i,1,m){
  		int u,v,Cost;
  		cin >> u >> v >> Cost;
